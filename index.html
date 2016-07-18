@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pokego.run</title>
+        <meta name="viewport" content="initial-scale=1.0">
+    </head>
+
+    <body aurelia-app="main">
+        <div id="loader">
+            <div id="moving-container">
+                <div id="pokeball-container">
+                    <div id="pokeball">
+                        <div class="pokeball-details"></div>
+                    </div>
+                </div>
+            </div>
+            <h1>Loading...</h1>
+        </div>
+
+        <style>
+            body,
+            html {
+                background: #333;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            @-webkit-keyframes spinning {
+                0% {
+                    -webkit-transform: rotate(-45deg);
+                            transform: rotate(-45deg);
+                }
+                50% {
+                    -webkit-transform: rotate(325deg);
+                            transform: rotate(325deg);
+                }
+                100% {
+                    -webkit-transform: rotate(-45deg);
+                            transform: rotate(-45deg);
+                }
+            }
+
+            @keyframes spinning {
+                0% {
+                    -webkit-transform: rotate(-45deg);
+                            transform: rotate(-45deg);
+                }
+                50% {
+                    -webkit-transform: rotate(325deg);
+                            transform: rotate(325deg);
+                }
+                100% {
+                    -webkit-transform: rotate(-45deg);
+                            transform: rotate(-45deg);
+                }
+            }
+
+            @-webkit-keyframes translating {
+                0% {
+                    -webkit-transform: translateX(-50%);
+                            transform: translateX(-50%);
+                }
+                50% {
+                    -webkit-transform: translateX(50%);
+                            transform: translateX(50%);
+                }
+                100% {
+                    -webkit-transform: translateX(-50%);
+                            transform: translateX(-50%);
+                }
+            }
+
+            @keyframes translating {
+                0% {
+                    -webkit-transform: translateX(-50%);
+                            transform: translateX(-50%);
+                }
+                50% {
+                    -webkit-transform: translateX(50%);
+                            transform: translateX(50%);
+                }
+                100% {
+                    -webkit-transform: translateX(-50%);
+                            transform: translateX(-50%);
+                }
+            }
+
+            @-webkit-keyframes color-change {
+                0%, 20%, 40%, 60%, 100% {
+                    background-color: #fff;
+                }
+                10%, 30%, 50%, 70%, 90% {
+                    background-color: #f00;
+                }
+            }
+
+            @keyframes color-change {
+                0%, 20%, 40%, 60%, 100% {
+                    background-color: #fff;
+                }
+                10%, 30%, 50%, 70%, 90% {
+                    background-color: #f00;
+                }
+            }
+
+            #loader {
+                left: 50%;
+                position: fixed;
+                text-align: center;
+                top: 50%;
+                -webkit-transform: translate(-50%, -50%);
+                        transform: translate(-50%, -50%);
+            }
+
+            #loader h1 {
+                color: #FFF;
+                position: relative;
+                top: -30px;
+            }
+
+            #moving-container {
+                width: 10em;
+                height: 10em;
+                margin: 10px auto 70px;
+                position: relative;
+                -webkit-animation: translating 5s infinite;
+                        animation: translating 5s infinite;
+            }
+
+            #pokeball-container {
+                width: 10em;
+                height: 10em;
+                margin: 20px auto;
+                -webkit-animation: spinning 5s infinite;
+                        animation: spinning 5s infinite;
+            }
+
+            #pokeball {
+                width: 10em;
+                height: 10em;
+                background-color: #fff;
+                border-radius: 50%;
+                position: relative;
+                overflow: hidden;
+            }
+
+            #pokeball:before {
+                content: '';
+                background-color: red;
+                border-radius: 5em 5em 0 0;
+                width: 10em;
+                height: 5em;
+                position: absolute;
+            }
+
+            #pokeball .pokeball-details {
+                width: 10em;
+                height: 1em;
+                background-color: #333;
+                position: absolute;
+                top: 4.5em;
+            }
+
+            #pokeball .pokeball-details::before {
+                content: '';
+                width: 3.5em;
+                height: 3.5em;
+                border-radius: 50%;
+                background-color: #333;
+                position: absolute;
+                top: -1.25em;
+                left: 3.25em;
+                z-index: 200;
+            }
+
+            #pokeball .pokeball-details::after {
+                content: '';
+                width: 1.8em;
+                height: 1.8em;
+                border: 0.3em solid white;
+                border-radius: 50%;
+                background-color: #fff;
+                position: absolute;
+                top: -0.65em;
+                left: 3.80em;
+                margin: 0 auto;
+                z-index: 250;
+                -webkit-animation: color-change 3s infinite;
+                        animation: color-change 3s infinite;
+            }
+        </style>
+
+        <script src="https://www.gstatic.com/firebasejs/3.2.0/firebase.js"></script>
+        <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "",
+            authDomain: "",
+            databaseURL: "",
+            storageBucket: "",
+        };
+        firebase.initializeApp(config);
+        </script>
+        <script src="scripts/vendor-bundle.js" data-main="aurelia-bootstrapper"></script>
+    </body>
+</html>

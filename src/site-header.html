@@ -1,0 +1,20 @@
+<template>
+    <header>
+        <div class="header">
+            <div class="header__left">
+                <h1 class="logo">Pokego.run</h1>
+                <h2>Pokemon spotting map</h2>
+            </div>
+            <div class="header__right">
+                <p if.bind="user.isLoggedIn"><a href="javascript:void(0);" click.delegate="showingPopup = !showingPopup">+ New Sighting</a></p>
+                <p if.bind="!user.isLoggedIn">Login <a href="javascript:void(0);" click.delegate="user.loginWithFacebook()">FB</a> | <a href="javascript:void(0);" click.delegate="user.loginWithGoogle()">Google</a></p>
+            </div>
+        </div>
+
+        <div class="search-bar">
+            <input type="text" value.bind="manualAddress" placeholder="Enter a location to find nearby Pokemon sightings..." change.delegate="geocodeAddress($event.target.value)">
+        </div>
+
+        <a href="javascript:void(0);" click.delegate="findMe()" class="findme" title="Find me on the map"><span></span></a>
+    </header>
+</template>

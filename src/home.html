@@ -1,0 +1,34 @@
+<template>
+    <require from="./site-header.html"></require>
+    <require from="./site-footer.html"></require>
+
+    <site-header></site-header>
+
+    <div id="map-container">
+        <div id="main-map"></div>
+    </div>
+
+    <site-footer></site-footer>
+
+    <div id="new-sighting-popup">
+        <div class="container">
+            <a href="javascript:void(0);" click.delegate="showingPopup = false" class="close-popup">X</a>
+            <form submit.delegate="handleSightingSubmit($event)">
+                <h3>Add New Pokemon Sighting</h3>
+                <label>What Pokemon did you see?</label>
+                <input type="text" name="spotted_pokemon" list="pokemon_list" value.bind="currentSighting.name" placeholder="Please select from the list">
+
+                <datalist id="pokemon_list">
+                    <option repeat.for="item of pokemon" value.bind="item"></option>
+                </datalist>
+
+                <br>
+                <label>Where did you see it?</label>
+                <em>Drag the Pokeball to correct your location</em>
+                <div id="draggable-geolocation-map" style="height: 250px; width: 100%;"></div>
+                <br>
+                <input type="submit" disabled.bind="!sightingIsSubmittable">
+            </form>
+        </div>
+    </div>
+</template>
