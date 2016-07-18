@@ -13,3 +13,6 @@ Pokego.run app. This is the source code for [Pokego.run](https://pokego.run) bui
 This app uses Firebase, so you will need to configure an app to use with it and then open up `index.html` and add in your API details down the bottom. You'll see they are currently blank.
 
 Google Maps is also used for this, so you'll need to open up `src/config.ts` and add in your Google Maps API key as well.
+
+## Credits
+The Pokemon database was obtained from [here](https://github.com/fanzeyi/Pokemon-DB).
