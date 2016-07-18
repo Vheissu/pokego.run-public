@@ -320,12 +320,16 @@ export class Home {
     }
 
     handleSightingSubmit(evt) {
-        if (this.user.getLoggedInUser()) {            
-            this.api.savePokemonSighting(this.user.getLoggedInUser().uid, this.currentSighting).then(() => {
-                this.showingPopup = false;
-            }).catch(() => {
-                window.alert('Something went wrong, make sure all fields are filled out');
-            });
+        if (this.user.getLoggedInUser()) {  
+            if (this.pokemon.includes(this.currentSighting.name.trim())) {
+                this.api.savePokemonSighting(this.user.getLoggedInUser().uid, this.currentSighting).then(() => {
+                    this.showingPopup = false;
+                }).catch(() => {
+                    window.alert('Something went wrong, make sure all fields are filled out');
+                });
+            } else {
+                window.alert('You have entered an invalid Pokemon.');
+            }   
         }
 
         evt.preventDefault();
