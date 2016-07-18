@@ -1,5 +1,5 @@
 export var config = {
-    "googleMapsKey": "AIzaSyCNjEIwPOh-frzcnR0KPsF266IO1FsgdkY"
+    "googleMapsKey": ""
 };
 
 export default config;
